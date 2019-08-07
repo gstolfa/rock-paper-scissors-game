@@ -24,6 +24,7 @@ class GameConsole extends React.Component<{}, IAddGameDataState> {
         this.state = {
             count: 0,
             game: {
+                totalRoundPlayed:0,
                 outcomeOne:0,
                 outcomeTwo:0,
                 result:0
@@ -56,8 +57,7 @@ class GameConsole extends React.Component<{}, IAddGameDataState> {
     public setGameAndCount = (data:Game) => {  
                 this.setState({ 
                     count: this.state.count+1,
-                    game: data, 
-                    totalRoundPlayed:this.state.totalRoundPlayed+1 
+                    game: data                    
                 }); 
             }
 
@@ -114,13 +114,11 @@ class GameConsole extends React.Component<{}, IAddGameDataState> {
                     border-collapse: collapse;
                     width: 100%;
                     }
-
                     td, th {
                     border: 1px solid #dddddd;
                     text-align: left;
                     padding: 8px;
                     }
-
                     tr:nth-child(even) {
                     background-color: #dddddd;
                     }
@@ -140,7 +138,7 @@ class GameConsole extends React.Component<{}, IAddGameDataState> {
                     <table>
                             <tbody>    
                                 <tr key="1">  
-                                    <td>Total Round Played: {this.state.totalRoundPlayed}</td>  
+                                    <td>Total Round Played: {this.state.game.totalRoundPlayed}</td>  
                                 </tr>  
                                 <tr key="2">  
                                     <td>Total wins for first player: {this.state.totalWinsForFirstPlayer}</td>  

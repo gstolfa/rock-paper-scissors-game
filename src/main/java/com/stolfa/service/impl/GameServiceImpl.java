@@ -10,6 +10,12 @@ import org.springframework.stereotype.Service;
 public class GameServiceImpl implements GameService {
 
     /**
+     * All gamers total round played. 
+     */
+    public static int totalRoundPlayed = 0;
+    
+    
+    /**
      * Validation and get result.
      * @return 
      */
@@ -17,9 +23,10 @@ public class GameServiceImpl implements GameService {
     public Game play(int outcomeOne, int outcomeTwo) throws InvalidParameterException {
 
         checkParameters(outcomeOne, outcomeTwo);
-
+        
         int result = getResult(outcomeOne, outcomeTwo);
-        return new Game(outcomeOne, outcomeTwo, result);
+        
+        return new Game(outcomeOne, outcomeTwo, result, ++totalRoundPlayed);
     }
 
     /**

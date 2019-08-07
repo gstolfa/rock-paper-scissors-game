@@ -1,6 +1,7 @@
 package com.stolfa.controller;
 
 import com.stolfa.service.GameService;
+import com.stolfa.service.impl.GameServiceImpl;
 import com.stolfa.view.Game;
 import java.security.InvalidParameterException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,17 @@ public class GameController {
 
         return new ResponseEntity<Object>(game, HttpStatus.OK);
     }
+    
+    
+    @GetMapping("/total-round-played")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<Object> totalRoundPlayed(@PathVariable final int outcomeOne, @PathVariable final int outcomeTwo) {
+        
+        Game game = new Game(GameServiceImpl.totalRoundPlayed);
+        
+        return new ResponseEntity<Object>(game, HttpStatus.OK);
+    }
+
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleBindException(Exception be) {
